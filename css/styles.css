@@ -1,0 +1,999 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ol, li{
+    list-style: none;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family:
+        "Helvetica Neue",
+        "Arial",
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans"
+        "Meiryo",
+        "sans-serif";
+    color: #333;
+}
+
+#wrapper {
+    width: 100%;
+    height: auto;
+    background-color: #efefed;
+    box-sizing: border-box;
+}
+
+.contents-wrapper {
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* ここからLoading */
+/* Loading背景画面設定　*/
+#splash {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background:#d8c8ae;
+    z-index: 9999;
+}
+    
+/* Loading画像中央配置　*/
+#splash_logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#splash_logo img {
+    width:162px;
+}
+
+/* fadeUpをするロゴの動き */
+.fadeUp-Loading{
+    animation-name: fadeUpAnime;
+    animation-duration:1.5s;
+    animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUpAnime{
+    from {
+    opacity: 0;
+    transform: translateY(30px);
+    }
+
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+
+
+/* ここからヘッダー */
+#header {
+    width: 100%;
+    height: 100vh;
+    padding-bottom: 205px;
+    position: relative;
+    background: 
+    linear-gradient(to top, #efefed 0%, #efefed 1%, rgba(255,255,255,0)),
+    linear-gradient(to right, rgba(103,85,49,0.5), rgba(255,255,255,0) 30%, rgba(255,255,255,0) 70%, rgba(103, 85, 49, 0.5));
+}
+
+
+/* ファーストビュー（配置） */
+#firstview {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+
+/* リンクビジュアル設定 */
+a {
+    color: #333;
+    text-decoration: none;
+    padding-bottom: 5px;
+}
+
+.gnavi-c li a{
+    /*線の基点とするためrelativeを指定*/
+    position: relative;
+}
+
+.gnavi-c li a::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /*線の形状*/
+    width: 100%;
+    height: 2px;
+    background:#333;
+    /*アニメーションの指定*/
+    transition: all .3s;
+    transform: scale(0, 1);/*X方向0、Y方向1*/
+    transform-origin: center top;/*上部中央基点*/
+}
+
+/*現在地とhoverの設定*/
+.gnavi-c li a:hover::after {
+    transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+
+/* 固定メニュー */
+
+.top-fixeds{
+    display: flex;
+}
+
+.fixed-logo{
+    width: 164px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fixed-menu {
+    margin-top: -75px;
+    background-color: rgba(239, 239, 237, 0.7);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    z-index: 5000;
+}
+
+.fixed-menu ol {
+    width: 687px;
+    height: 75px;
+    margin: 0 0 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.fixed-menu li {
+    line-height: 75px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* 固定ボタン */
+.fixed-btn {
+    width: 156px;
+    position: fixed;
+	right: 0;
+	bottom:10px;
+	z-index: 5000;
+    /*はじめは非表示*/
+	opacity: 0;
+	transform: translateX(156px);
+}
+
+/* 固定ボタン hover */
+.fixed-btn a{
+    transition: 0.5s;
+}
+
+.fixed-btn a:hover{
+    opacity: 0.7;
+}
+
+/*　左の動き　*/
+
+#page-top.LeftMove{
+	animation: LeftAnime 0.5s forwards;
+}
+
+@keyframes LeftAnime{
+  from {
+    opacity: 0;
+	transform: translateX(156px);
+  }
+  to {
+    opacity: 1;
+	transform: translateX(0);
+  }
+}
+
+/*　右の動き　*/
+
+#page-top.RightMove{
+	animation: RightAnime 0.5s forwards;
+}
+@keyframes RightAnime{
+  from {
+  	opacity: 1;
+	transform: translateX(0);
+  }
+  to {
+  	opacity: 1;
+	transform: translateX(156px);
+  }
+}
+
+
+/* ここからイラスト配置 */
+.lights {
+    position: relative;
+}
+
+
+/* light-l1 */
+.light-l1 {
+    position: absolute;
+    top: 0;
+    z-index: 500;
+}
+
+.light_l1{
+    position: relative;
+    left: 20px;
+    z-index: 2;
+}
+
+.light_l1:hover{
+   opacity: 0;
+}
+
+.light_l_n1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
+/* light-l2 */
+.light-l2 {
+    position: absolute;
+    top: 0;
+    left: 52px;
+}
+
+.light_l2{
+    position: relative;
+    left: 60px;
+    z-index: 2;
+}
+
+.light_l2:hover{
+   opacity: 0;
+}
+
+.light_l_n2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
+/* light-l3 */
+.light-l3 {
+    position: absolute;
+    top: 0;
+    left: 220px;
+}
+
+.light_l3{
+    position: relative;
+    left: 65px;
+    z-index: 2;
+}
+
+.light_l3:hover{
+   opacity: 0;
+}
+
+.light_l_n3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
+/* light-r1 */
+.light-r1 {
+    position: absolute;
+    top: 0;
+    right: 146px;
+}
+
+.light_r1{
+    position: relative;
+    right: 64px;
+    z-index: 2;
+}
+
+.light_r1:hover{
+   opacity: 0;
+}
+
+.light_r_n1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+
+/* light-r2 */
+.light-r2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.light_r2{
+    position: relative;
+    right: 66px;
+    z-index: 2;
+}
+
+.light_r2:hover{
+   opacity: 0;
+}
+
+.light_r_n2{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+
+/* 中央メインロゴ配置 */
+.logo-mainvisual{
+    width: 162px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+
+/* メインビジュアル */
+.mainvisual {
+    width: 1063px;
+    margin: 0 auto;
+}
+
+/* メインビジュアル動き */
+.mainvisual{
+    filter: blur(70px);
+	animation: blur-anim 3.5s linear forwards;
+}
+
+@keyframes blur-anim {
+	100% {	filter: blur(0); }
+}
+
+/* ここまでヘッダー */
+
+
+
+/* ここからメインコンテンツ */
+#main {
+    width: 100%;
+    height: auto;
+}
+
+.inner {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+/* ここから「木楽について」 */
+#about {
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    width: 217px;
+    padding-top: 70px;
+    font-size: 1.6rem;
+    text-align: right;
+    border-bottom: 1px solid;
+}
+
+/* .headline{
+    width: 100%;
+    height: 30px;
+    background-color: #efefed;
+} */
+
+
+/* リード文 */
+#read {
+    width: 100%;
+    height: auto;
+    padding: 55px 0px 224px 120px;
+    display: flex;
+}
+
+#read .left {
+    /* padding-left: 200px; */
+}
+
+#read .right {
+    width: 666px;
+    padding-top: 118px;
+    margin: 0 0 0 auto;
+}
+
+h2 {
+    padding-bottom: 80px;
+    font-size: 4.0rem;
+    line-height: 68px;
+}
+
+#read p {
+    width: 547px;
+    font-weight: bold;
+}
+
+
+/* 製品の特徴 */
+#feature {
+    width: 100%;
+    height: auto;
+    padding-bottom: 360px;
+}
+
+#feature .row {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#feature .row img {
+    padding-bottom: 35px;
+}
+
+#feature .box {
+    width: 300px;
+}
+
+#feature .txt-box {
+    width: 239px;
+    margin: 0 auto;
+}
+
+#feature .box h3 {
+    padding-bottom: 25px;
+    font-size: 2.4rem;
+    font-weight: normal;
+    /* display: inline-block; */
+    /* text-align: left; */
+}
+
+#feature .box p {
+    width: 239px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* display: inline-block; */
+    /* text-align: left; */
+}
+
+
+/* ものづくりのこだわり */
+#commitment {
+    width: 100%;
+    height: auto;
+    padding-bottom: 300px;
+    background-image: 
+    url(../img/irst_commitment1.png), 
+    url(../img/irst_commitment2.png), 
+    url(../img/irst_commitment3.png);
+    background-repeat: no-repeat,no-repeat,no-repeat;
+    background-position: top 385px left 100px, top 410px right 100px, bottom 280px left 120px;
+}
+
+#commitment .row-head {
+    padding: 40px 0px 194px;
+    display: flex;
+}
+
+#commitment .txt-head {
+    padding-right: 50px;
+    padding-left: 75px;
+}
+
+#commitment .row-head img {
+    width: 588px;
+    margin: 0 0 0 auto;
+}
+
+#commitment .row1 {
+    padding: 0px 0px 118px 45px;
+    display: flex;
+}
+
+#commitment .row2 {
+    padding-left: 370px;
+    display: flex;
+}
+
+#commitment h3 {
+    padding-top: 85px;
+    font-size: 3.2rem;
+    font-weight: normal;
+}
+
+#commitment h4 {
+    padding-top: 32px;
+    font-size: 2.4rem;
+    font-weight: normal;
+}
+
+#commitment .txt-box {
+    padding-right: 50px;
+}
+
+#commitment .row-head img {
+    padding-left: 20px;
+}
+
+#commitment p {
+    padding-top: 50px;
+    /* font-weight: bold; */
+}
+
+
+/* 製品ラインナップ */
+.area{
+    overflow: hidden;
+}
+
+.wrap{
+    display: flex;
+}
+
+.item{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .item:last-child{
+    width: calc(100%-50%);
+} */
+
+#lineup {
+    width: 100%;
+    height: auto;
+    /* padding-bottom: 300px; */
+}
+
+#lineup .product{
+    /* width: 1000px; */
+    margin: 0 auto;
+    display: flex;
+    /* padding-right: calc(50% - 50vw); */
+    padding-right: 360px;
+}
+
+#lineup .txt-box{
+    padding: 200px 118px 200px 0px;
+    align-items: center;
+}
+
+#lineup h3{
+    padding-bottom: 20px;
+    font-size: 2.4rem;
+}
+
+#lineup p{
+    font-size: 1.2rem;
+}
+
+#lineup .btn-viewmore1{
+    width: 177px;
+    /* padding: 250px 0px 250px 0px; */
+    /* margin-right: -100px; */
+    /* padding-right: 1000px; */
+    /* margin: 0 auto; */
+    /* left: 0; */
+    /* right: 0; */
+
+}
+
+
+/* 作り手の紹介 */
+#creator {
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+    padding-bottom: 300px;
+    position: relative;
+    background-color: #efefed;
+    z-index: 100;
+    background-image: url(../img/irst_creator1.png), url(../img/irst_creator2.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: top 70px right 70px, bottom 50px left 97px;
+}
+
+#creator h1{
+    /* padding-top: 300px; */
+}
+
+#creator .row1 {
+    width: 700px;
+    padding: 160px 0px 114px;
+    display: flex;
+}
+
+#creator .row2 {
+    width: 761px;
+    /* padding-bottom: 120px; */
+    margin: 0 0 0 auto;
+    display: flex;
+}
+
+#creator h3 {
+    padding-top: 90px;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+#creator h4 {
+    padding-top: 20px;
+    font-size: 3.0rem;
+    font-weight: normal;
+}
+
+#creator .txt-box {
+    padding-right: 64px;
+}
+
+
+/* 実績 */
+#achievement {
+    width: 100%;
+    height: auto;
+    padding-bottom: 300px;
+    /* position: relative; */
+    background-color: #efefed;
+    z-index: 100;
+}
+
+#achievement h1{
+    margin-bottom: 62px;
+}
+
+#achievement .row {
+    padding-top: 50px;
+    display: flex;
+}
+
+#achievement h3 {
+    padding: 90px 0px 55px;
+    font-size: 3.0rem;
+    font-weight: normal;
+}
+
+#achievement img{
+    margin: 0 0 0 auto;
+    margin-right: calc(50% - 50vw);
+}
+
+
+/* NEWS */
+#news {
+    width: 100%;
+    height: auto;
+    padding-bottom: 300px;
+    position: relative;
+    background-color: #efefed;
+    z-index: 100;
+}
+
+/* NEWS全体配置 */
+.news-page {
+    display: flex;
+}
+
+#news .left{
+    padding: 120px 0 0 20px;
+}
+
+#news .right{
+    padding-top: 110px;
+}
+
+/* タブ機能 */
+.news-tab{
+    width: 370px;
+    
+}
+
+.news-tab ol{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    font-weight: bold;
+}
+
+
+/* タブアニメーション */
+.tab li a{
+    /*線の基点とするためrelativeを指定*/
+    position: relative;
+}
+
+.tab li a::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /*線の形状*/
+    width: 100%;
+    height: 2px;
+    background:#333;
+    /*アニメーションの指定*/
+    transition: all .3s;
+    transform: scale(0, 1);/*X方向0、Y方向1*/
+    transform-origin: center top;/*上部中央基点*/
+}
+
+
+/* NEWS欄 */
+.clm-news {
+    width: 740px;
+    height: 645px;
+    padding-top: 120px;
+    margin: 0 0 0 auto;
+}
+
+.news-item {
+    width: 100%;
+    height: 108px;
+    position: relative;
+    border-top: 1px solid #333;
+    transition: .2s;
+}
+
+.news-item:last-child {
+    border-bottom: 1px solid #333;
+}
+
+/* ホバーアニメーション */
+.news-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0.7;
+}
+
+
+/* 日付＆NEW!配置 */
+.news-head {
+    width: 115px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-date {
+    /* width: 115px; */
+    font-size: 1.0rem;
+}
+
+.news-new {
+    width: 35px;
+    font-size: 1.0rem;
+    background-color: #b7b7b6;
+    text-align: center;
+}
+
+/* ２行目配置 */
+.news-content{
+    display: flex;
+}
+
+/* ラベル */
+.news-label {
+    display: block;
+    width: auto;
+    padding-top: 10px;
+    margin-left: -8px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.opencampus{
+    width: 140px;
+}
+
+.event{
+    width: 70px;
+}
+
+/* タイトル */
+.news-title {
+    width: calc(100% - 140px);
+    padding-left: 15px;
+    padding-top: 10px;
+    margin-top: -1px;
+    font-weight: bold;
+}
+
+
+/*現在地とhoverの設定*/
+.tab li a:hover::after {
+    transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+/* newsタブ表示＆非表示設定 */
+/*liにactiveクラスがついた時の形状*/
+.tab li.active a{
+    text-decoration: underline 2px #333;
+    text-underline-offset: 4.5px;
+}
+
+.clm-news {
+	display: none;/*はじめは非表示*/
+	opacity: 0;/*透過0*/
+}
+
+/*areaにis-activeというクラスがついた時の形状*/
+.clm-news.is-active {
+    display: block;/*表示*/
+    animation-name: displayAnime;/*ふわっと表示させるためのアニメーション*/
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes displayAnime{
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+
+/* ここからフッター */
+#footer {
+    width: 100%;
+    height: auto;
+    padding: 60px 0px 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-image: url(../img/bg_footer.png);
+    z-index: 9999;
+}
+
+/* フッター配置 */
+.footer-t {
+    display: flex;
+}
+
+.footer-b {
+    display: flex;
+}
+
+
+/* フッターロゴhover */
+.logo-footer{
+    transition: 0.5s;
+}
+
+.logo-footer:hover {
+    opacity: 0.7;
+}
+
+
+/* sns配置 */
+.sns {
+    width: 245px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#footer .sns img {
+    /* padding-right: 36px; */
+    transition: 0.5s;
+}
+
+/* sns　hover */
+#footer .sns img:hover {
+    opacity: 0.5;
+}
+
+/* フッターメニュー */
+.footer-menu {
+    width: 238px;
+    margin: 0 0 0 auto;
+    padding-bottom: 95px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-menu ol {
+    line-height: 40px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+/* リンクビジュアル設定 */
+.footer-menu a {
+    color: #fff;
+}
+
+.gnavi-r li a{
+    /*線の基点とするためrelativeを指定*/
+    position: relative;
+}
+
+.gnavi-r li a::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /*線の形状*/
+    width: 100%;
+    height: 2px;
+    background:#fff;
+    /*アニメーションの指定*/
+    transition: all .3s;
+    transform: scale(0, 1);/*X方向0、Y方向1*/
+    transform-origin: right top;/*左上基点*/
+}
+
+/*現在地とhoverの設定*/
+.gnavi-r li a:hover::after {
+    transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+
+/* トップボタン */
+.btn-top {
+    width: 78px;
+    margin: 0 0 0 auto;
+}
+
+.btn-top a{
+    transition: 0.5s;
+}
+
+.btn-top a:hover{
+    opacity: 0.5;
+}
+
+#footer p{
+    padding-top: 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+}

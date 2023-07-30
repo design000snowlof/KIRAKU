@@ -1,0 +1,2 @@
+[2/15/2023, 11:55:59 PM] layer "bg_footer.png": Duplicate path: bg_footer.png
+[2/15/2023, 11:55:59 PM] layer "irst_news.png": Duplicate path: irst_news.png
